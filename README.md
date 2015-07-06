@@ -1,6 +1,8 @@
 # Windows Sucks
 
-This is a batch-tool, that can run through all your image files in given directory and correct their file dates according to real photo data stored in EXIF record. Program's name is intentionally like that, because Windows sucks. It changes file date during each save of it. And thus if you, for example rotate some incorrectly shot photo, you'll end up with file date set to the moment you correcte the image, not to the day, it was actually shot. This little tool can help in this case, if only your image contains proper EXIF record (most images produced by digital cameras has).
+This is a batch-tool, that can run through all your image files in given directory and correct their file dates according to real photo data stored in EXIF record.
+
+_Program's name is intentionally like that, because Windows sucks. It changes file date during each save of it. And thus if you, for example rotate some incorrectly shot photo, you'll end up with file date set to the moment you correcte the image, not to the day, it was actually shot. This little tool can help in this case, if only your image contains proper EXIF record (most images produced by digital cameras has)._
 
 For Delphi developer this piece of source code may be useful to learn, how to operate on EXIF records or how to batch-process all files in given folder.
 
