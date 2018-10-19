@@ -4,7 +4,8 @@ interface
 
 uses
   Windows, SysUtils, Classes, Controls, Forms, Dialogs, StdCtrls, ExtCtrls,
-  Graphics, dExif, dIPTC, ComCtrls, Grids, dFolderDialog, INIFiles, DateUtils;
+  Graphics, dExif, dIPTC, ComCtrls, Grids, dFolderDialog, INIFiles, DateUtils,
+  Variants;
 
 type
   TMainForm = class(TForm)
@@ -295,7 +296,11 @@ begin
   sDate := StringReplace(sDate, ':', '-', [rfReplaceAll]);
 
   try
-    tdTemp := StrToDateTime(sDate + ' ' + sTime);
+    //https://stackoverflow.com/a/31356362/1469208
+    //http://docwiki.embarcadero.com/Libraries/XE2/en/System.Variants.VarToDateTime
+    //
+    //tdTemp := StrToDateTime(sDate + ' ' + sTime);
+    tdTemp := VarToDateTime(sDate + ' ' + sTime);
 
     if ((cbTimeZone.Enabled) and (sTime <> '')) then
     begin
@@ -504,7 +509,11 @@ begin
       sFile := lblDir.Caption + sgSummary.Cells[0, a];
 
       try
-        dtDate := StrToDateTime(sDate);
+        //https://stackoverflow.com/a/31356362/1469208
+        //http://docwiki.embarcadero.com/Libraries/XE2/en/System.Variants.VarToDateTime
+        //
+        //dtDate := StrToDateTime(sDate);
+        dtDate := VarToDateTime(sDate);
         sResult := SetFileDate(sFile, dtDate);
       except
         if Application.MessageBox(PChar('It got pretty fucked up for row ' + IntToStr(a) + ', when trying to read/convert date!' + #10#13 + #10#13 + 'Abort now?'), 'Houston, we have a problem!', MB_ICONERROR + MB_YESNO + MB_DEFBUTTON2) = IDYES then Break;
